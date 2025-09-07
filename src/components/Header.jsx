@@ -10,25 +10,47 @@ const Header = () => {
   };
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    // Fermer le menu mobile d'abord
     setIsMenuOpen(false);
+
+    // Attendre un peu que le menu se ferme avant de faire le scroll
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        // Calculer la position en tenant compte du header fixe
+        const headerHeight = 80; // Hauteur approximative du header
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 100);
+  };
+
+  const scrollToTop = () => {
+    setIsMenuOpen(false);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
     <>
       <header style={styles.header}>
         <div style={styles.headerContent}>
-          {/* Logo avec icône ciseaux */}
-          <div style={styles.logo}>
+          {/* Logo avec icône ciseaux - clic pour retour en haut */}
+          <button onClick={scrollToTop} style={styles.logo}>
             <Scissors style={styles.scissorsIcon} />
             <div style={styles.logoText}>
               <span style={styles.logoName}>AMEL</span>
               <span style={styles.logoSubtitle}>coupe des cheveux</span>
             </div>
-          </div>
+          </button>
 
           {/* Navigation desktop */}
           <nav style={styles.navDesktop} className="nav-desktop">
@@ -135,92 +157,103 @@ const Header = () => {
         </div>
 
         {/* Navigation mobile */}
-        <nav style={styles.navMobile} className="nav-mobile">
-          <ul style={styles.navMobileList}>
-            <li>
-              <button
-                onClick={() => scrollToSection("services")}
-                style={styles.navMobileLink}
-                onMouseEnter={(e) =>
-                  (e.target.style.color = COLORS.orangePrimary)
-                }
-                onMouseLeave={(e) => (e.target.style.color = COLORS.brownDark)}
-              >
-                Services
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("about")}
-                style={styles.navMobileLink}
-                onMouseEnter={(e) =>
-                  (e.target.style.color = COLORS.orangePrimary)
-                }
-                onMouseLeave={(e) => (e.target.style.color = COLORS.brownDark)}
-              >
-                À propos
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("coverage")}
-                style={styles.navMobileLink}
-                onMouseEnter={(e) =>
-                  (e.target.style.color = COLORS.orangePrimary)
-                }
-                onMouseLeave={(e) => (e.target.style.color = COLORS.brownDark)}
-              >
-                Zone d'intervention
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("gallery")}
-                style={styles.navMobileLink}
-                onMouseEnter={(e) =>
-                  (e.target.style.color = COLORS.orangePrimary)
-                }
-                onMouseLeave={(e) => (e.target.style.color = COLORS.brownDark)}
-              >
-                Galerie
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("contact")}
-                style={styles.navMobileLink}
-                onMouseEnter={(e) =>
-                  (e.target.style.color = COLORS.orangePrimary)
-                }
-                onMouseLeave={(e) => (e.target.style.color = COLORS.brownDark)}
-              >
-                Contact
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("contact")}
-                style={{ ...styles.btnPrimary, ...styles.navMobileCta }}
-              >
-                Prendre rendez-vous
-              </button>
-            </li>
-          </ul>
-        </nav>
+        {isMenuOpen && (
+          <nav style={styles.navMobile} className="nav-mobile">
+            <ul style={styles.navMobileList}>
+              <li>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  style={styles.navMobileLink}
+                  onMouseEnter={(e) =>
+                    (e.target.style.color = COLORS.orangePrimary)
+                  }
+                  onMouseLeave={(e) =>
+                    (e.target.style.color = COLORS.brownDark)
+                  }
+                >
+                  Services
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("about")}
+                  style={styles.navMobileLink}
+                  onMouseEnter={(e) =>
+                    (e.target.style.color = COLORS.orangePrimary)
+                  }
+                  onMouseLeave={(e) =>
+                    (e.target.style.color = COLORS.brownDark)
+                  }
+                >
+                  À propos
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("coverage")}
+                  style={styles.navMobileLink}
+                  onMouseEnter={(e) =>
+                    (e.target.style.color = COLORS.orangePrimary)
+                  }
+                  onMouseLeave={(e) =>
+                    (e.target.style.color = COLORS.brownDark)
+                  }
+                >
+                  Zone d'intervention
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("gallery")}
+                  style={styles.navMobileLink}
+                  onMouseEnter={(e) =>
+                    (e.target.style.color = COLORS.orangePrimary)
+                  }
+                  onMouseLeave={(e) =>
+                    (e.target.style.color = COLORS.brownDark)
+                  }
+                >
+                  Galerie
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  style={styles.navMobileLink}
+                  onMouseEnter={(e) =>
+                    (e.target.style.color = COLORS.orangePrimary)
+                  }
+                  onMouseLeave={(e) =>
+                    (e.target.style.color = COLORS.brownDark)
+                  }
+                >
+                  Contact
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  style={{ ...styles.btnPrimary, ...styles.navMobileCta }}
+                >
+                  Prendre rendez-vous
+                </button>
+              </li>
+            </ul>
+          </nav>
+        )}
       </header>
 
       <style>{`
         @media (max-width: 768px) {
           .nav-desktop, .header-cta { display: none !important; }
           .menu-toggle { display: block !important; }
-          .nav-mobile { display: block !important; }
         }
       `}</style>
     </>
   );
 };
 
-// Styles CSS en fin de fichier
+// Styles CSS - HEADER CORRIGÉ
 const styles = {
   header: {
     position: "fixed",
@@ -243,8 +276,12 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: "12px",
-    textDecoration: "none",
+    background: "none",
+    border: "none",
     cursor: "pointer",
+    padding: "5px",
+    borderRadius: "8px",
+    transition: "background-color 0.3s ease",
   },
   scissorsIcon: {
     width: "35px",
@@ -256,6 +293,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     lineHeight: 1,
+    textAlign: "left",
   },
   logoName: {
     fontFamily: FONTS.primary,
@@ -311,7 +349,6 @@ const styles = {
     color: COLORS.brownDark,
   },
   navMobile: {
-    display: "none",
     position: "absolute",
     top: "100%",
     left: 0,

@@ -12,16 +12,18 @@ import Footer from "./components/Footer";
 import { COLORS, FONTS } from "./utils/constants";
 
 function App() {
-  // Styles globaux inline
+  // Styles globaux inline - CORRIGÉS
   const appStyles = {
     fontFamily: FONTS.secondary,
     fontWeight: 400,
     lineHeight: 1.6,
     color: COLORS.brownDark,
     backgroundColor: COLORS.cream,
-    overflowX: "hidden",
     margin: 0,
     padding: 0,
+    width: "100%",
+    minHeight: "100vh",
+    overflowX: "hidden",
   };
 
   return (

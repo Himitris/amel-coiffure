@@ -10,9 +10,11 @@ export const COLORS = {
   brownDark: "#473126",
 };
 
-// Typographies
+// Typographies - OFFICIELLES selon la charte graphique
 export const FONTS = {
-  primary: "'Fredoka One', cursive", // Alternative à Nectarine
+  // Police principale NECTARINE (fichier local) + fallback
+  primary: "'Nectarine', 'Fredoka One', cursive",
+  // Police secondaire Poppins (officielle de la charte)
   secondary: "'Poppins', sans-serif",
 };
 
@@ -118,9 +120,11 @@ export const COMMON_STYLES = {
     maxWidth: "1200px",
     margin: "0 auto",
     padding: "0 20px",
+    width: "100%",
   },
   section: {
     padding: "80px 0",
+    width: "100%",
   },
   button: {
     fontFamily: FONTS.secondary,

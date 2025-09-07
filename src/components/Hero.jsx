@@ -19,6 +19,7 @@ const Hero = () => {
 
   return (
     <>
+      {/* CORRECTION: ID et styles corrigés pour le scroll */}
       <section style={styles.hero} id="hero">
         <div style={styles.container}>
           <div style={styles.heroContent}>
@@ -242,17 +243,20 @@ const Hero = () => {
   );
 };
 
-// Styles CSS en fin de fichier
+// Styles CSS - CORRIGÉS POUR LE SCROLL
 const styles = {
   hero: {
+    // CORRECTION: Hauteur et positionnement corrigés
     minHeight: "100vh",
-    paddingTop: "100px",
-    paddingBottom: "60px",
     backgroundColor: COLORS.cream,
     position: "relative",
     overflow: "hidden",
     display: "flex",
     alignItems: "center",
+    // CORRECTION: Padding ajusté pour le header fixe
+    paddingTop: "120px", // Plus d'espace pour le header
+    paddingBottom: "60px",
+    width: "100%",
   },
   container: {
     ...COMMON_STYLES.container,
@@ -263,7 +267,8 @@ const styles = {
     gridTemplateColumns: "1.2fr 1fr",
     gap: "80px",
     alignItems: "center",
-    minHeight: "600px",
+    minHeight: "500px", // Réduit pour permettre le scroll
+    width: "100%",
   },
   heroLeft: {
     maxWidth: "600px",
