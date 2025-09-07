@@ -1,0 +1,195 @@
+/* Import des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Variables CSS basées sur la charte graphique */
+:root {
+  /* Palette de couleurs exacte de la charte */
+  --cream: #fffaf2;
+  --pink-pastel: #f8caf1;
+  --orange-primary: #ef712e;
+  --red-orange: #f65d38;
+  --brown-medium: #89604a;
+  --brown-dark: #473126;
+  
+  /* Typographies */
+  --font-primary: 'Fredoka One', cursive; /* Alternative à Nectarine */
+  --font-secondary: 'Poppins', sans-serif;
+  
+  /* Espacements */
+  --section-padding: 80px 0;
+  --container-max-width: 1200px;
+  --container-padding: 0 20px;
+}
+
+/* Reset et styles de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--brown-dark);
+  background-color: var(--cream);
+  overflow-x: hidden;
+}
+
+/* Container générique */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--container-padding);
+}
+
+/* Styles pour les titres */
+h1, h2, h3 {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: var(--brown-dark);
+}
+
+h2 {
+  font-size: 2.8rem;
+  color: var(--orange-primary);
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+h3 {
+  font-size: 2rem;
+  color: var(--brown-medium);
+}
+
+/* Styles pour les paragraphes */
+p {
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: var(--brown-dark);
+}
+
+/* Boutons suivant la charte */
+.btn {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--orange-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--red-orange);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--pink-pastel);
+  color: var(--brown-dark);
+}
+
+.btn-secondary:hover {
+  background-color: var(--brown-medium);
+  color: white;
+}
+
+/* Sections avec alternance de couleurs selon la charte */
+.section {
+  padding: var(--section-padding);
+  position: relative;
+}
+
+.section-cream {
+  background-color: var(--cream);
+}
+
+.section-orange {
+  background-color: var(--orange-primary);
+  color: white;
+}
+
+.section-orange h2,
+.section-orange h3 {
+  color: white;
+}
+
+.section-pink {
+  background-color: var(--pink-pastel);
+}
+
+.section-brown {
+  background-color: var(--brown-medium);
+  color: white;
+}
+
+.section-brown h2,
+.section-brown h3 {
+  color: white;
+}
+
+/* Logo et icône ciseaux */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  color: var(--orange-primary);
+  text-decoration: none;
+}
+
+.scissors-icon {
+  width: 40px;
+  height: 40px;
+  stroke: var(--orange-primary);
+  stroke-width: 2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 50px 0;
+    --container-padding: 0 15px;
+  }
+  
+  h1 {
+    font-size: 2.8rem;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+  
+  h3 {
+    font-size: 1.6rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
